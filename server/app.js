@@ -2,19 +2,19 @@ const mysql = require("mysql2");
 const express = require("express");
 var cors = require("cors");
 
-const bodyparser = require("body-parser");
+const bodyParser = require("body-parser");
 
 var app = express();
 app.use(cors());
 
 // Use  body parser as middle ware
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 var mysqlConnection = mysql.createConnection({
-  host: "localhost",
-  user: "myDBuser",
-  password: "myDBuser",
-  database: "myDB",
+  user: process.env.APPLE_USER,
+  database: process.env.APPLE_DATABASE,
+  password: process.env.APPLE_PASSWORD,
+  host: process.env.APPLE_HOST
 });
 
 mysqlConnection.connect((err) => {
@@ -64,7 +64,7 @@ app.get("/install", (req, res) => {
 
 // Insert a new iPhone
 app.post("/addiphones", (req, res) => {
-  // console.log(bodyparser.json);
+  // console.log(bodyParser.json);
   console.log(req.body);
   let Id = req.body.iphoneId;
   let img = req.body.imgPath;
