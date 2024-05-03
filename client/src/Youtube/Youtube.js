@@ -6,16 +6,16 @@ import React, { useState, useEffect } from "react";
 const Youtube = () => {
   const [youTubeVideos, setYouTubeVideos] = useState([]);
 
-  // useEffect(() => {
-  //   fetch(
-  //     `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCE_M8A5yxnLfW0KghEeajjw&maxResults=9&order=date&key=AIzaSyBRadWQZ1opFP7QTq5QZmQGzwJdgd5TphE`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       const videos = data.items;
-  //       setYouTubeVideos(videos);
-  //     });
-  // }, []);
+  useEffect(() => {
+    fetch(
+      `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCE_M8A5yxnLfW0KghEeajjw&maxResults=9&order=date&key=AIzaSyBRadWQZ1opFP7QTq5QZmQGzwJdgd5TphE`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const videos = data.items;
+        setYouTubeVideos(videos);
+      });
+  }, []);
 
   return (
     <div className="allVideosWrapper">
