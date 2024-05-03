@@ -1,6 +1,7 @@
 const mysql = require("mysql2");
 const express = require("express");
 var cors = require("cors");
+require("dotenv").config();
 
 const bodyParser = require("body-parser");
 
@@ -49,6 +50,7 @@ app.get("/install", (req, res) => {
     PRIMARY KEY (price_id),
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
   )`;
+
   mysqlConnection.query(createProducts, (err, results, fields) => {
     if (err) console.log(err);
   });
