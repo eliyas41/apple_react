@@ -284,6 +284,9 @@ function Footer() {
           </div>
         </div>
       </div>
+      <center>
+        <p style={{ fontWeight: "bold" }}>Clone by Eliyas: 2023</p>
+      </center>
     </footer>
   );
 }
